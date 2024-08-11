@@ -4,7 +4,7 @@ import { doc, updateDoc, increment, getDocs, query, where, collection } from "fi
 import { auth, db } from "../../database/firebase_cong";
 
 export default function Game1({ navigation }) {
-    const [points, setPoints] = useState("");
+    const [points, setPoints] = useState(0);
     const [userDocId, setUserDocId] = useState(null);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Game1({ navigation }) {
                     const querySnapshot = await getDocs(q);
                     if (!querySnapshot.empty) {
                         const userDoc = querySnapshot.docs[0];
-                        setPoints(userDoc.data().moneda1); // Cargar los puntos actuales
+                        setPoints(userDoc.data().moneda1 || 0); // Cargar los puntos actuales
                         setUserDocId(userDoc.id); // Guardar el ID del documento
                     } else {
                         console.log("No user data found");
