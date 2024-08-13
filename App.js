@@ -10,6 +10,7 @@ import Game3 from "./Scripr/Game/Game3";
 import Game4 from "./Scripr/Game/Game4";
 import Game5 from "./Scripr/Game/Game5";
 import Scoore from "./Scripr/Scoore";
+import Pets from "./Scripr/Game/Pest";
 
 const Stack = createNativeStackNavigator()
 
@@ -21,9 +22,11 @@ export default function App() {
         <Stack.Screen name="Sign" component={Sign} />
 
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Pets" component={Pets} />
 
         <Stack.Screen name="Game-1" component={Game1} />
         <Stack.Screen name="Game-2" component={Game2} />
+
         <Stack.Screen name="Game-3" component={Game3} />
         <Stack.Screen name="Game-4" component={Game4} />
         <Stack.Screen name="Game-5" component={Game5} />
