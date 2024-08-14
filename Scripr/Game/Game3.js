@@ -3,6 +3,7 @@ import { View, Text, Image, Button, StyleSheet, Alert } from "react-native";
 import { doc, updateDoc, increment, getDocs, query, where, collection } from "firebase/firestore";
 import { auth, db } from "../../database/firebase_cong";
 
+
 import moneyVerde from "../../img/verde.png"
 import moneyred from "../../img/red.png"
 
