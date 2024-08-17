@@ -19,17 +19,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Dashboard" component={Dashboard} />
+        
         <Stack.Screen name="Log" component={Log} />
         <Stack.Screen name="Sign" component={Sign} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="Game-1" component={Game1} />
         <Stack.Screen name="Game-2" component={Game2} />
         <Stack.Screen name="Game-4" component={Game4} />
         <Stack.Screen name="Game-3" component={Game3} />
         <Stack.Screen name="Index" component={Index} />
+        
+        <Stack.Screen name="Pets" component={Pets} />
         <Stack.Screen name="Game-5" component={Game5} />
         <Stack.Screen name="Scoore" component={Scoore} />
-        <Stack.Screen name="Pets" component={Pets} />
       </Stack.Navigator>
     </NavigationContainer>
   );

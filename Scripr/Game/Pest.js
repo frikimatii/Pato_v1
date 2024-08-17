@@ -1,61 +1,46 @@
-import 'react-native-gesture-handler';
-import React from 'react'; 
-import { StyleSheet, View } from 'react-native';
+import React , {useEffect}from "react";
+import { View, StyleSheet, Text} from "react-native";
 import Animated, {
-  useAnimatedStyle,
+  Easing,
   useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
   withTiming,
-} from 'react-native-reanimated';
-// highlight-start
-import {
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler';
-// highlight-end
+} from "react-native-reanimated";
 
-export default function App() {
-  const pressed = useSharedValue(false);
+const duration = 2000;
+const easing = Easing.bezier(0.25, -0.5, 0.25, 1);
 
-  const tap = Gesture.Tap()
-    .onBegin(() => {
-      pressed.value = true;
-    })
-    .onFinalize(() => {
-      pressed.value = false;
-    });
+export default function Pest() {
+  const sv = useSharedValue(0);
+
+  useEffect(() => {
+    sv.value = withRepeat(withTiming(1, { duration,  easing }), -1);
+  }, []);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    backgroundColor: pressed.value ? '#FFE04B' : '#B58DF1',
-    transform: [{ scale: withTiming(pressed.value ? 1.2 : 1) }],
+    transform: [{ rotate: `${sv.value * 360}deg` }],
   }));
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <View style={styles.container}>
-        {/* highlight-next-line */}
-
-        <GestureDetector gesture={tap}>
-          <Animated.View style={[styles.circle, animatedStyles]} />
-
-          {/* highlight-next-line */}
-        </GestureDetector>
-      </View>
-    </GestureHandlerRootView>
+    <View style={styles.container}>
+      <Animated.View style={[styles.box, animatedStyles]} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: 'center',
-    height: '100%',
+    height: "100%",
+
   },
-  circle: {
-    height: 120,
+  box: {
     width: 120,
-    borderRadius: 500,
+    height: 120,
+    backgroundColor: "#b58df1",
+    borderRadius: 20
   },
-  
 });
